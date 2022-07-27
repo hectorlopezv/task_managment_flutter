@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             RichText(
-              text: TextSpan(
+              text: const TextSpan(
                 text: 'Hello',
                 style: TextStyle(
                   fontSize: 60,
@@ -54,16 +54,20 @@ class _HomeScreenState extends State<HomeScreen> {
               backgroundColor: Colors.white,
               textColor: Colors.black,
               text: "Add Task",
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/addTask');
+              },
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             ButtonWidget(
               backgroundColor: Colors.blue,
               textColor: Colors.white,
               text: "View All",
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/addTask');
+              },
             )
           ],
         ),
