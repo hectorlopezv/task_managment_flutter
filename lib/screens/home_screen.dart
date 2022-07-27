@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
               textColor: Colors.white,
               text: "View All",
               onPressed: () {
-                Navigator.pushNamed(context, '/addTask');
+                Navigator.pushNamed(context, '/allTask');
               },
             )
           ],

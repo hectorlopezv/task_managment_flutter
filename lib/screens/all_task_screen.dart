@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/utils/app_colors.dart';
-import 'package:task_manager/widgets/button_widget.dart';
-import 'package:task_manager/widgets/text_field_widget.dart';
 
-class AddTaskScreen extends StatelessWidget {
-  const AddTaskScreen({Key? key}) : super(key: key);
+class AllTaskScreen extends StatelessWidget {
+  const AllTaskScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController nameController = TextEditingController();
-    TextEditingController detailController = TextEditingController();
     return Scaffold(
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: double.infinity,
@@ -42,34 +37,42 @@ class AddTaskScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height / 26,
+            height: 15,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Column(
+          Container(
+            padding: EdgeInsets.only(left: 20, right: 20),
+            child: Row(
               children: [
-                TextFieldWidget(
-                  controller: nameController,
-                  hintText: 'Add Task',
+                Icon(
+                  Icons.home,
+                  color: AppColors.secondaryColor,
                 ),
                 SizedBox(
+                  width: 10,
+                ),
+                Container(
+                  width: 20,
                   height: 20,
+                  child: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                    size: 20,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.5),
+                    color: Colors.black,
+                  ),
                 ),
-                TextFieldWidget(
-                  controller: detailController,
-                  maxLines: 4,
-                  hintText: 'Task Detail',
-                  borderRadius: 10,
-                ),
+                Spacer(),
+                Icon(Icons.calendar_month, color: AppColors.secondaryColor),
                 SizedBox(
-                  height: 20,
+                  width: 10,
                 ),
-                ButtonWidget(
-                  backgroundColor: AppColors.secondaryColor,
-                  textColor: Colors.white,
-                  text: "Add",
-                  onPressed: () {},
-                )
+                Text(
+                  "2",
+                  style:
+                      TextStyle(fontSize: 20, color: AppColors.secondaryColor),
+                ),
               ],
             ),
           ),
