@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:task_manager/screens/add_tasks_screen.dart';
+import 'package:task_manager/screens/all_task_screen.dart';
 import 'package:task_manager/widgets/button_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -55,7 +58,11 @@ class _HomeScreenState extends State<HomeScreen> {
               textColor: Colors.black,
               text: "Add Task",
               onPressed: () {
-                Navigator.pushNamed(context, '/addTask');
+                Get.to(
+                  () => AddTaskScreen(),
+                  transition: Transition.fade,
+                  duration: Duration(seconds: 1),
+                );
               },
             ),
             const SizedBox(
@@ -66,7 +73,11 @@ class _HomeScreenState extends State<HomeScreen> {
               textColor: Colors.white,
               text: "View All",
               onPressed: () {
-                Navigator.pushNamed(context, '/allTask');
+                Get.to(
+                  () => AllTaskScreen(),
+                  transition: Transition.fade,
+                  duration: Duration(seconds: 1),
+                );
               },
             )
           ],

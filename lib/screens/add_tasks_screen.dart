@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:task_manager/utils/app_colors.dart';
 import 'package:task_manager/widgets/button_widget.dart';
 import 'package:task_manager/widgets/text_field_widget.dart';
-
+import 'package:get/get.dart';
 class AddTaskScreen extends StatelessWidget {
   const AddTaskScreen({Key? key}) : super(key: key);
 
@@ -30,7 +30,7 @@ class AddTaskScreen extends StatelessWidget {
                   left: 10,
                   child: IconButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Get.back();
                     },
                     icon: Icon(
                       Icons.arrow_back,

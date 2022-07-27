@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:task_manager/utils/app_colors.dart';
 import 'package:task_manager/widgets/button_widget.dart';
 import 'package:task_manager/widgets/task_widgets.dart';
@@ -43,7 +44,7 @@ class AllTaskScreen extends StatelessWidget {
                   left: 10,
                   child: IconButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Get.back();
                     },
                     icon: Icon(
                       Icons.arrow_back,
@@ -119,7 +120,8 @@ class AllTaskScreen extends StatelessWidget {
                               return Container(
                                 height: 550,
                                 decoration: BoxDecoration(
-                                  color: Color.fromARGB(255, 210, 238, 255).withOpacity(0.5),
+                                  color: Color.fromARGB(255, 210, 238, 255)
+                                      .withOpacity(0.5),
                                   borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(20),
                                     topRight: Radius.circular(20),

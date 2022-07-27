@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager/screens/add_tasks_screen.dart';
-import 'package:task_manager/screens/all_task_screen.dart';
+import 'package:get/get.dart';
 import 'package:task_manager/screens/home_screen.dart';
 
 void main() {
@@ -13,14 +12,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Task Manager',
       theme: ThemeData(),
-      routes: {
-        '/': (context) => HomeScreen(),
-        "/addTask": (context) => AddTaskScreen(),
-        "/allTask": (context) => AllTaskScreen(),
-      },
+      home: HomeScreen(),
     );
   }
 }
