@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:task_manager/utils/app_colors.dart';
 import 'package:task_manager/widgets/button_widget.dart';
+import 'package:task_manager/widgets/error_warning.dart';
 import 'package:task_manager/widgets/text_field_widget.dart';
-import 'package:get/get.dart';
+
 class AddTaskScreen extends StatelessWidget {
   const AddTaskScreen({Key? key}) : super(key: key);
 
@@ -10,6 +12,22 @@ class AddTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController nameController = TextEditingController();
     TextEditingController detailController = TextEditingController();
+    bool _dataValidation() {
+      if (nameController.text.trim().isEmpty) {
+        ErrorWarning.taskErrorOrWrning("Task Name", "Task name is empty");
+        return false;
+      } else if (detailController.text.trim().isEmpty) {
+        ErrorWarning.taskErrorOrWrning("Task Detail", "Task detail is empty");
+        return false;
+      }
+      return true;
+    }
+
+    void addTask() {
+      bool isValid = _dataValidation();
+      if (isValid) {}
+    }
+
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +86,7 @@ class AddTaskScreen extends StatelessWidget {
                   backgroundColor: AppColors.secondaryColor,
                   textColor: Colors.white,
                   text: "Add",
-                  onPressed: () {},
+                  onPressed: addTask,
                 )
               ],
             ),
