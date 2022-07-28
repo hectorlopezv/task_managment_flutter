@@ -24,4 +24,18 @@ class DataService extends GetConnect implements GetxService {
     });
     return response;
   }
+
+  Future<Response> updateData(Map data, String id) async {
+    Response response = await post(baseUrl + "/update/$id", data, headers: {
+      "Content-Type": "application/json: charset=utf-8",
+    });
+    return response;
+  }
+
+  Future<Response> deleteData(String id) async {
+    Response response = await delete(baseUrl + "/delete/$id", headers: {
+      "Content-Type": "application/json: charset=utf-8",
+    });
+    return response;
+  }
 }

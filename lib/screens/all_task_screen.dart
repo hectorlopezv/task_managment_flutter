@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_manager/screens/data_controller.dart';
-import 'package:task_manager/screens/view_taks_scren.dart';
+import 'package:task_manager/screens/edit_task_screen.dart';
+import 'package:task_manager/screens/view_taks_screen.dart';
 import 'package:task_manager/utils/app_colors.dart';
 import 'package:task_manager/widgets/button_widget.dart';
 import 'package:task_manager/widgets/task_widgets.dart';
@@ -11,6 +12,10 @@ class AllTaskScreen extends StatelessWidget {
 
   _loadData() async {
     await Get.find<DataController>().getData();
+  }
+
+  _deleteData(String id) async {
+    await Get.find<DataController>().deleteData(id.toString());
   }
 
   @override
@@ -167,7 +172,7 @@ class AllTaskScreen extends StatelessWidget {
                                               textColor: Colors.white,
                                               text: "Edit",
                                               onPressed: () {
-                                                Get.off(() => ViewTaskScreen(
+                                                Get.off(() => EditTaskScreen(
                                                     id: int.parse(controller
                                                         .myData[index]["id"])));
                                               },
@@ -183,7 +188,13 @@ class AllTaskScreen extends StatelessWidget {
 
                               return Future.delayed(
                                 const Duration(seconds: 1),
-                                () => direction == DismissDirection.endToStart,
+                                () async {
+                                  final id =
+                                      int.parse(controller.myData[index]["id"]);
+                                  await _deleteData(id.toString());
+                                  return direction ==
+                                      DismissDirection.endToStart;
+                                },
                               );
                             },
                             key: ObjectKey(index),
