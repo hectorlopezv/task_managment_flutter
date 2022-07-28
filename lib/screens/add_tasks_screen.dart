@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_manager/screens/all_task_screen.dart';
+import 'package:task_manager/screens/data_controller.dart';
 import 'package:task_manager/utils/app_colors.dart';
 import 'package:task_manager/widgets/button_widget.dart';
 import 'package:task_manager/widgets/error_warning.dart';
@@ -23,9 +25,21 @@ class AddTaskScreen extends StatelessWidget {
       return true;
     }
 
-    void addTask() {
+    void addTask() async {
       bool isValid = _dataValidation();
-      if (isValid) {}
+      if (isValid) {
+        //call API
+        await Get.find<DataController>().postData(
+          nameController.text.trim(),
+          detailController.text.trim(),
+        );
+        Future.delayed(Duration(seconds: 1), () {
+          Get.to(
+            () => AllTaskScreen(),
+            transition: Transition.circularReveal,
+          );
+        });
+      }
     }
 
     return Scaffold(

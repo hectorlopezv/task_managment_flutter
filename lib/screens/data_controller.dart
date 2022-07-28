@@ -20,13 +20,14 @@ class DataController extends GetxController {
     } else {
       print("we didn't get data");
     }
+    update();
   }
 
   Future<void> postData(String task, String taskDetail) async {
     _isLoading = true;
     Response response = await service.postData({
-      "task": task,
-      "taskDetail": taskDetail,
+      "task_name": task,
+      "task_detail": taskDetail,
     });
     if (response.statusCode == 200) {
       print("we create a new Task");
@@ -34,5 +35,18 @@ class DataController extends GetxController {
     } else {
       print("we didn't get data");
     }
+    update();
+  }
+
+  Future<void> getSingleData(String id) async {
+    _isLoading = true;
+    Response response = await service.getTask(id);
+    if (response.statusCode == 200) {
+      print("we create a new Task");
+      update();
+    } else {
+      print("we didn't get data");
+    }
+    update();
   }
 }

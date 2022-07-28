@@ -11,6 +11,13 @@ class DataService extends GetConnect implements GetxService {
     return response;
   }
 
+  Future<Response> getTask(String id) async {
+    Response response = await get(baseUrl + "/gettask/$id", headers: {
+      "Content-Type": "application/json: charset=utf-8",
+    });
+    return response;
+  }
+
   Future<Response> postData(Map data) async {
     Response response = await post(baseUrl + "/create", data, headers: {
       "Content-Type": "application/json: charset=utf-8",
